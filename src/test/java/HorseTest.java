@@ -116,9 +116,7 @@ class HorseTest {
         Horse horse = new Horse("name", 3, 7);
         double expectedDistanceAfterMove = horse.getDistance() + horse.getSpeed() * 0.7;
         horseMockedStatic.when(() -> Horse.getRandomDouble(0.2, 0.9)).thenReturn(0.7);
-
         horse.move();
-
         assertEquals(expectedDistanceAfterMove, horse.getDistance());
     }
 }
