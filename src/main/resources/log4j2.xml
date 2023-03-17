@@ -1,5 +1,9 @@
 <Configuration status="DEBUG">
     <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy.MM.dd HH:mm:ss} %-5level %logger{36}: %msg%n"/>
+        </Console>
+
         <RollingFile name="RollingFile" fileName="logs/hippodrome.log"
                      filePattern="logs/hippodrome.%d{yyyy-MM-dd}.log"
                      ignoreExceptions="false">
@@ -8,7 +12,7 @@
             <DefaultRolloverStrategy>
                 <Delete basePath="logs" maxDepth="2">
                     <IfFileName glob="hippodrome.*.log"/>
-                    <IfLastModifier age="7d"/>
+                    <IfLastModified age="7d"/>
                 </Delete>
             </DefaultRolloverStrategy>
         </RollingFile>
@@ -16,6 +20,7 @@
     <Loggers>
         <Root level="ALL">
             <AppenderRef ref="RollingFile"/>
+            <AppenderRef ref="Console"/>
         </Root>
     </Loggers>
 </Configuration>
