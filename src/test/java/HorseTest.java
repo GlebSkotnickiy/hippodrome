@@ -114,9 +114,9 @@ class HorseTest {
     void moveGetRandomDouble() {
         MockedStatic<Horse> mockStatic = Mockito.mockStatic(Horse.class);
         mockStatic.when(() -> Horse.getRandomDouble(0.2, 0.9)).thenReturn(0.7);
-        Horse horse = new Horse("name", 3, 7);
+        Horse thorse = new Horse("name", 3, 7);
         double result = 7 + 3 * 0.7;
-        horse.move();
-        assertEquals(result, horse.getDistance());
+        thorse.move();
+        assertEquals(result, thorse.getDistance());
     }
 }
