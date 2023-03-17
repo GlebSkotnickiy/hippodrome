@@ -1,15 +1,8 @@
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.TestTemplate;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvFileSource;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -117,12 +110,13 @@ class HorseTest {
         mockStatic.verify(() -> Horse.getRandomDouble(0.2, 0.9));
     }
 
-//    @Test
-//    void moveGetRandomDouble() {
-//        MockedStatic<Horse> mockStatic = Mockito.mockStatic(Horse.class);
-//        mockStatic.when(() -> Horse.getRandomDouble(0.2, 0.9)).thenReturn(0.7);
-//        Horse horse = new Horse("name", 3, 7);
-//        horse.move();
-//        assertEquals(7 + 3 * 0.7, horse.getDistance());
-//    }
+    @Test
+    void moveGetRandomDouble() {
+        MockedStatic<Horse> mockStatic = Mockito.mockStatic(Horse.class);
+        mockStatic.when(() -> Horse.getRandomDouble(0.2, 0.9)).thenReturn(0.7);
+        Horse horse = new Horse("name", 3, 7);
+        double result = 7 + 3 * 0.7;
+        horse.move();
+        assertEquals(result, horse.getDistance());
+    }
 }
